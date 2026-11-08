@@ -199,12 +199,13 @@ def remove_old_logs(options):
                     WHERE target = ?
                       AND module_name = ?
                       AND scan_unique_id != ?
-                      AND scan_unique_id != ?
+                      AND (? IS NULL OR scan_unique_id != ?)
                 """,
                 (
                     options["target"],
                     options["module_name"],
                     options["scan_id"],
+                    options["scan_compare_id"],
                     options["scan_compare_id"],
                 ),
             )
