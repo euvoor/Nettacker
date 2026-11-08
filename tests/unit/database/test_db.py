@@ -297,9 +297,9 @@ class TestDatabase:
                     WHERE target = ?
                       AND module_name = ?
                       AND scan_unique_id != ?
-                      AND scan_unique_id != ?
+                      AND (? IS NULL OR scan_unique_id != ?)
                 """,
-            ("192.168.1.1", "port_scan", "current_scan", "compare_scan"),
+            ("192.168.1.1", "port_scan", "current_scan", "compare_scan", "compare_scan"),
         )
         assert result
 
